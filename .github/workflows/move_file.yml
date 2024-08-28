@@ -22,3 +22,6 @@ jobs:
       run: |
         git mv Dev/TestFile.txt QA/
         git commit -m "Move TestFile.txt from Dev to QA"
+
+    - name: List QA folder contents
+      run: ls QA/
