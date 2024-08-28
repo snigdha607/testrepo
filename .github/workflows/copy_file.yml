@@ -24,12 +24,12 @@ jobs:
       run: |
         cp -r Dev/TestFile.txt QA/
         git add QA/
-        git commit -m "Copy TestFile.txt from Dev to QA - $(date +"%Y-%m-%d %H:%M:%S")"
+        git commit -m "Copy TestFile.txt from Dev to QA - $(date +'%Y-%m-%dT%H:%M:%S%z' --date='TZ="Asia/Kolkata"')"
         git push
 
     - name: Copy file from QA to Prod
       run: |
         cp -r QA/TestFile.txt Prod/
         git add Prod/
-        git commit -m "Copy TestFile.txt from QA to Prod - $(date +"%Y-%m-%d %H:%M:%S")"
+        git commit -m "Copy TestFile.txt from QA to Prod - $(date +'%Y-%m-%dT%H:%M:%S%z' --date='TZ="Asia/Kolkata"')"
         git push
