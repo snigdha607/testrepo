@@ -15,13 +15,14 @@ jobs:
 
     - name: Set up Git user
       run: |
-        git config --global user.name "snigdha607"
-        git config --global user.email "snigdha.mallapragada@capgemini.com"
+        git config --global user.name "Your Name"
+        git config --global user.email "your-email@example.com"
 
     - name: Move file
-      env:
-        ACTIONS_PAT: ${{ secrets.ACTIONS_PAT }}
       run: |
         git mv Dev/TestFile.txt QA/
         git commit -m "Move TestFile.txt from Dev to QA"
-        git push https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/snigdha607/testrepo.git HEAD:main
+        git push origin main
+
+    - name: List QA folder contents
+      run: ls QA/
