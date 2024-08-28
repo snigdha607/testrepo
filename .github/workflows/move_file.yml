@@ -19,9 +19,9 @@ jobs:
         git config --global user.email "snigdha.mallapragada@capgemini.com"
 
     - name: Move file
+      env:
+        ACTIONS_PAT: ${{ secrets.ACTIONS_PAT }}
       run: |
         git mv Dev/TestFile.txt QA/
         git commit -m "Move TestFile.txt from Dev to QA"
-
-    - name: List QA folder contents
-      run: ls QA/
+        git push https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/snigdha607/testrepo.git HEAD:main
