@@ -15,5 +15,15 @@ jobs:
     
     - name: Check if only sample file changed
       run: |
-        if["$git diff --name-only HEAD~1 HEAD --
+        if["$git diff --name-only HEAD~1 HEAD --TestFile)" == "TestFile"]; then 
+          echo "Only sample file changed, moving to QA folder"
+          git mv TestFile QA/TestFile_QA.txt
+          git commit -m "Moved sample file to QA folder"
+          git push origin main
+
+        else
+          echo "Changes detected elsewhere, skipping move"
+          fi
+  
+
         
