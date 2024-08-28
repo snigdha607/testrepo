@@ -15,8 +15,3 @@ jobs:
 
       - name: Move file
         run: mv Dev/TestFile.txt QA
-
-      - name: Commit changes
-        run: |
-          git commit -m "Move file from source to destination"
-       
