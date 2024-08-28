@@ -1,4 +1,4 @@
-name: Move File
+name: Copy File
 
 on:
   push:
@@ -13,13 +13,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Git user
+    - name: Copy file
       run: |
-        git config --global user.name "Your Name"
-        git config --global user.email "your-email@example.com"
-
-    - name: Move file
-      run: |
-        git mv Dev/TestFile.txt QA/
+        cp -r Dev/TestFile.txt QA/
+        git add QA/
         git commit -m "Move TestFile.txt from Dev to QA"
         git push
