@@ -6,7 +6,7 @@ on:
       - main  # Trigger the action on push to the main branch
 
 jobs:
-  move-file:
+  copy-file:
     runs-on: ubuntu-latest
 
     steps:
