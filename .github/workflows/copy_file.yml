@@ -12,6 +12,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      
+    - name: Set up Git user
+      run: |
+        git config --global user.name "snigdha607"
+        git config --global user.email "snigdha.mallapragada@capgemini.com"
+
+
 
     - name: Copy file
       run: |
