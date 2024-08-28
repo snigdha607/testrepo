@@ -1,25 +1,23 @@
-name: 'Move File'
+name: Move File
 
 on:
   push:
-    branches: 
-      - main
+    branches:
+      - main  # Trigger the workflow on push to the main branch
 
 jobs:
-  move_file:
+  move-file:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-    
-    - name: Check if only sample file changed
-      run: |
-        if [ "$(git diff --name-only HEAD~1 HEAD -- Dev/TestFile.txt)" == "Dev/TestFile.txt" ]; then 
-          echo "Only sample file changed, moving to QA folder"
-          git mv Dev/TestFile.txt QA/TestFile_QA.txt
-          git commit -m "Moved sample file to QA folder"
-          git push origin main
-        else
-          echo "Changes detected elsewhere, skipping move"
-        fi
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Move file
+        run: mv Dev/TestFile.txt QA
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Move file from source to destination"
+          git push
