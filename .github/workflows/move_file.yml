@@ -3,15 +3,18 @@ name: Move File
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the main branch
+      - main  # Trigger the action on push to the main branch
 
 jobs:
   move-file:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Move file
-        run: mv Dev/TestFile.txt QA
+    - name: Move file
+      run: |
+        git mv Dev/TestFile.txt QA/
+        git commit -m "Move TestFile.txt from Dev to QA"
+        git push
