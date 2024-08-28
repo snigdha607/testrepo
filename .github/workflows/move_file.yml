@@ -3,7 +3,7 @@ name: 'Move File'
 on:
   push:
     branches: 
-      -main
+      - main
 
 jobs:
   move_file:
@@ -11,19 +11,15 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     - name: Check if only sample file changed
       run: |
-        if["$git diff --name-only HEAD~1 HEAD --Dev/TestFile.txt)" == "Dev/TestFile.txt"]; then 
+        if [ "$(git diff --name-only HEAD~1 HEAD -- Dev/TestFile.txt)" == "Dev/TestFile.txt" ]; then 
           echo "Only sample file changed, moving to QA folder"
-          git mv TestFile QA/TestFile_QA.txt
+          git mv Dev/TestFile.txt QA/TestFile_QA.txt
           git commit -m "Moved sample file to QA folder"
           git push origin main
-
         else
           echo "Changes detected elsewhere, skipping move"
-          fi
-  
-
-        
+        fi
