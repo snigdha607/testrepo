@@ -1,3 +1,2 @@
-To test GitHub Actions.
-Moving the file from Dev to QA.
-Please work this time..
+Testing GitHub Actions.
+Copying the file from Dev to QA....
