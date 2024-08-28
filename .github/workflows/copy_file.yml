@@ -26,5 +26,5 @@ jobs:
       run: |
         cp -r Dev/TestFile.txt QA/
         git add QA/
-        git commit -m "Copy TestFile.txt from Dev to QA -$(date+"%Y-%m-%d %H:%M:%S")"
+        git commit -m "Copy TestFile.txt from Dev to QA - $(date +"%Y-%m-%d %H:%M:%S")"
         git push
