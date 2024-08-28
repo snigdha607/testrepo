@@ -3,7 +3,9 @@ name: Copy File
 on:
   push:
     branches:
-      - main  # Trigger the action on push to the main branch
+      - main # Trigger the action on push to the main branch
+    paths:
+      - 'Dev/TestFile.txt' # Trigger the action only when there is a change committed in the TestFile
 
 jobs:
   copy-file:
@@ -24,5 +26,5 @@ jobs:
       run: |
         cp -r Dev/TestFile.txt QA/
         git add QA/
-        git commit -m "Copy TestFile.txt from Dev to QA"
+        git commit -m "Copy TestFile.txt from Dev to QA -$(date+"%Y-%m-%d %H:%M:%S")"
         git push
